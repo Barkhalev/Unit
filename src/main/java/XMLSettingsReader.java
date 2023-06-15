@@ -48,28 +48,5 @@ public class XMLSettingsReader {
                 .evaluate(doc));
         logFile = xPath.compile("/config/log/fileName")
                 .evaluate(doc);
-
-//        Element root = doc.getDocumentElement();
-//        Element loadSettings = (Element) root.getElementsByTagName("load").item(0);
-//        Element saveSettings = (Element) root.getElementsByTagName("save").item(0);
-//        Element logSettings = (Element) root.getElementsByTagName("log").item(0);
-//
-////        System.out.println(logSettings.getTextContent());
-//
-//        isLoad = Boolean.parseBoolean(loadSettings.getElementsByTagName(("enabled").item(0).getTextContent()));
-//        loadFile = loadSettings.getElementsByTagName(("fileName").item(0).getTextContent());
-//        loadFormat = loadSettings.getElementsByTagName(("format").item(0).getTextContent());
-//
-////        System.out.println(isLoad);
-////        System.out.println(loadFile);
-////        System.out.println(loadFormat);
-//
-//        isSave = Boolean.parseBoolean(saveSettings.getElementsByTagName(("enabled").item(0).getTextContent()));
-//        saveFile = saveSettings.getElementsByTagName(("fileName").item(0).getTextContent());
-//        saveFormat = saveSettings.getElementsByTagName(("format").item(0).getTextContent());
-//
-//        isLog = Boolean.parseBoolean(logSettings.getElementsByTagName(("enabled").item(0).getTextContent()));
-//        logFile = loadSettings.getElementsByTagName(("fileName").item(0).getTextContent());
-
     }
 }

@@ -11,15 +11,25 @@ public class Basket implements Serializable {
     private int[] prices;
     private int[] quantities;
 
-    public Basket() {
+    public String[] getGoods() {
+        return goods;
+    }
 
+    public int[] getPrices() {
+        return prices;
+    }
+
+    public int[] getQuantities() {
+        return quantities;
+    }
+
+    public Basket() {
     }
     public Basket(String[] goods, int[] prices) {
         this.goods = goods;
         this.prices = prices;
         this.quantities = new int[goods.length];
     }
-
     public void addToCart(int productNum, int amount) {
         quantities[productNum] += amount; }
 
@@ -37,17 +47,6 @@ public class Basket implements Serializable {
     }
     public void saveTxt(File textFile) throws IOException {
         try (PrintWriter out = new PrintWriter(textFile)){
-//            for (String good : goods) {
-//                out.print(good + " ");
-//            }
-//            out.println();
-//            for (int price : prices) {
-//                out.print(price + " ");
-//            }
-//            out.println();
-//            for (int quantity : quantities) {
-//                out.print(quantity + " ");
-//            }
             out.println(String.join(" ", goods));
             out.println(String.join(" ", Arrays.stream(prices)
                     .mapToObj(String::valueOf)
@@ -55,8 +54,6 @@ public class Basket implements Serializable {
             out.println(String.join(" ", Arrays.stream(quantities)
                     .mapToObj(String::valueOf)
                     .toArray(String []::new )));
-//            String[] pricesStr = Arrays.stream(prices).mapToObj(String::valueOf).toArray(String []::new );
-//            out.println(pricesStr);
         }
     }
     public static Basket loadFromTxtFile(File textFile) {
@@ -95,9 +92,7 @@ public class Basket implements Serializable {
             throw new RuntimeException(e);
         }
         return basket;
-
     }
-
     public void saveJSON(File file) {
         try (PrintWriter writer = new PrintWriter(file)){
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -121,7 +116,5 @@ public class Basket implements Serializable {
             throw new RuntimeException(e);
         }
         return basket;
-
     }
-
 }

@@ -1,5 +1,4 @@
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.File;
@@ -9,10 +8,8 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static String[] products = {"Молоко", "Хлеб", "Гречневая крупа"};
+    static String[] products = {"Молоко", "Хлеб", "Гречка"};
     static int[] prices = {78, 50, 64};
-
-//    static File saveFile = new File("basket.json");
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
 
@@ -23,15 +20,6 @@ public class Main {
 
         Basket basket = createBasket(loadFile, settings.isLoad, settings.loadFormat);
         ClientLog log = new ClientLog();
-
-//        Basket basket = null;
-//        if (saveFile.exists()) {
-//            basket = Basket.loadFromJSONFile(saveFile);
-//        } else {
-//            basket = new Basket(products, prices);
-//        }
-//
-//        ClientLog log = new ClientLog();
 
         while (true) {
             showPrice();
@@ -58,7 +46,6 @@ public class Main {
         }
         basket.printCart();
     }
-
     private static Basket createBasket(File loadFile, boolean isLoad, String loadFormat) {
         Basket basket;
         if (isLoad && loadFile.exists()){
@@ -72,7 +59,6 @@ public class Main {
         }
         return basket;
     }
-
     public static void showPrice() {
         System.out.println("Список возможных товаров для покупки");
         for (int i = 0; i < products.length; i++) {
